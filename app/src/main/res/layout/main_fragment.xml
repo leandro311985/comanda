@@ -1,0 +1,66 @@
+<?xml version="1.0" encoding="utf-8"?>
+<RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:padding="16dp"
+    tools:context=".ui.main.MainFragment">
+   <TextView
+       android:layout_width="wrap_content"
+       android:layout_height="wrap_content"
+       android:layout_centerHorizontal="true"
+       android:layout_marginTop="50dp"
+       android:text="Tutorials Point"
+       android:textAlignment="center"
+       android:textColor="@android:color/holo_green_dark"
+       android:textSize="32sp"
+       android:textStyle="bold" />
+   <TextView
+       android:layout_width="match_parent"
+       android:layout_height="wrap_content"
+       android:layout_above="@id/checkBox1"
+       android:layout_marginBottom="30dp"
+       android:text="Selecione seus produtos!"
+       android:textAlignment="center"
+       android:textColor="@android:color/background_dark"
+       android:textSize="24sp"
+       android:textStyle="bold|italic" />
+
+   <androidx.constraintlayout.widget.ConstraintLayout
+       android:layout_width="match_parent"
+       android:layout_height="wrap_content">
+
+
+   </androidx.constraintlayout.widget.ConstraintLayout>
+
+   <CheckBox
+       android:id="@+id/checkBox1"
+       android:layout_width="wrap_content"
+       android:layout_height="wrap_content"
+       android:layout_centerInParent="true"
+       android:text="Pizza" />
+   <CheckBox
+       android:id="@+id/checkBox2"
+       android:layout_width="wrap_content"
+       android:layout_height="wrap_content"
+       android:layout_below="@id/checkBox1"
+       android:layout_centerInParent="true"
+       android:layout_marginTop="10dp"
+       android:text="Café" />
+   <CheckBox
+       android:id="@+id/checkBox3"
+       android:layout_width="wrap_content"
+       android:layout_height="wrap_content"
+       android:layout_below="@id/checkBox2"
+       android:layout_centerInParent="true"
+       android:layout_marginTop="10dp"
+       android:text="Hamburguer" />
+   <Button
+       android:id="@+id/button"
+       android:layout_width="match_parent"
+       android:layout_height="wrap_content"
+       android:layout_below="@id/checkBox3"
+       android:layout_marginTop="10dp"
+       android:text="Compra completa" />
+</RelativeLayout>
