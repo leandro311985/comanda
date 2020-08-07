@@ -4,16 +4,13 @@ import android.os.Bundle
 import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
-import android.widget.Button
-import android.widget.CheckBox
 import android.widget.Toast
 import androidx.fragment.app.Fragment
 import androidx.lifecycle.ViewModelProviders
 import com.example.mylogin.Description
 import com.example.mylogin.Pedido
 import com.example.mylogin.R
-import com.example.mylogin.User
-import com.google.firebase.auth.FirebaseAuth
+import com.github.loadingview.LoadingDialog
 import com.google.firebase.database.DatabaseReference
 import com.google.firebase.database.FirebaseDatabase
 import kotlinx.android.synthetic.main.main_fragment.*
@@ -29,6 +26,8 @@ class MainFragment : Fragment() {
     private var pizza: String? = null
     private var buger: String? = null
     private var cafe: String? = null
+    private lateinit var  dialog : LoadingDialog
+
 
 
 
@@ -44,13 +43,18 @@ class MainFragment : Fragment() {
         viewModel = ViewModelProviders.of(this).get(MainViewModel::class.java)
         database = FirebaseDatabase.getInstance().reference
 
+        //dialog = LoadingDialog[MainActivity()].show()
+
+
+
+
         gravar()
 
 
     }
 
     fun gravar(){
-
+       // dialog.show()
         button.setOnClickListener {
             var totalAmount: Int = 0
             val result = StringBuilder()
@@ -76,6 +80,9 @@ class MainFragment : Fragment() {
             Toast.makeText(activity, result.toString(), Toast.LENGTH_SHORT).show()
             pedidoFirebase(pedidos?:"","20,00","1")
             pedidoFirebase(cafe?:"","5,00","1")
+
+         //   Thread.sleep(5000)
+        //    dialog.hide()
 
 
         }

@@ -18,10 +18,12 @@ import androidx.appcompat.app.AppCompatActivity
 import androidx.lifecycle.Observer
 import androidx.lifecycle.ViewModelProviders
 import com.example.mylogin.*
+import com.github.loadingview.LoadingDialog
 import com.google.firebase.auth.FirebaseAuth
 import com.google.firebase.auth.FirebaseUser
 import hideSoftKeyboard
 import kotlinx.android.synthetic.main.fragment_erro.*
+import kotlinx.android.synthetic.main.new_user_fragment.*
 import replaceFragmentInActivity
 
 class LoginActivity : AppCompatActivity()  {
@@ -30,7 +32,7 @@ class LoginActivity : AppCompatActivity()  {
     private lateinit var auth: FirebaseAuth
     private lateinit var username: EditText
     private lateinit var password: EditText
-    private lateinit var loading: ProgressBar
+    private lateinit var  dialog : LoadingDialog
 
 
     @RequiresApi(Build.VERSION_CODES.LOLLIPOP)
@@ -38,11 +40,11 @@ class LoginActivity : AppCompatActivity()  {
         super.onCreate(savedInstanceState)
         setContentView(R.layout.activity_login)
         auth = FirebaseAuth.getInstance()
-
         username = findViewById(R.id.usernameId)
         password = findViewById(R.id.passwordId)
         val login = findViewById<Button>(R.id.login)
-        loading = findViewById<ProgressBar>(R.id.loading)
+
+        dialog = LoadingDialog.get(this)
 
         loginViewModel = ViewModelProviders.of(this, LoginViewModelFactory())
             .get(LoginViewModel::class.java)
@@ -68,7 +70,7 @@ class LoginActivity : AppCompatActivity()  {
 
             val loginResult = it ?: return@Observer
 
-            loading.visibility = View.GONE
+            dialog.hide()
             if (loginResult.error != null) {
                 showLoginFailed(loginResult.error)
             }
@@ -110,7 +112,7 @@ class LoginActivity : AppCompatActivity()  {
 
 
             login.setOnClickListener {
-                loading.visibility = View.VISIBLE
+                 dialog.show()
                 loginViewModel.login(username.text.toString(), password.text.toString())
                 hideSoftKeyboard()
             }
@@ -125,7 +127,7 @@ class LoginActivity : AppCompatActivity()  {
 
     private fun updateUI(user: FirebaseUser?) {
         if (user != null) {
-            if (user.uid != "X7QUuqyy1ZQVc7d2quo9HpGmJkA3"){
+            if (user.uid == "5XulB8v7iBajjQylm6hpb84glEu2"){
                 val intent = Intent(this, ManagerActivity::class.java)
                 startActivity(intent)
                 finish()
@@ -154,15 +156,15 @@ class LoginActivity : AppCompatActivity()  {
     }
 
     private fun firebaseLogin() {
-        loading.visibility = View.VISIBLE
+        val dialog = LoadingDialog.get(this).show()
         auth.signInWithEmailAndPassword("${username.text}", "${password.text}")
             .addOnCompleteListener(this) { task ->
                 if (task.isSuccessful) {
-                    loading.visibility = View.GONE
+                    dialog.hide()
                     val user = auth.currentUser
                     updateUI(user)
                 } else {
-                    loading.visibility = View.GONE
+                    dialog.hide()
                     var text = "Erro ao logar. Verifique se digitou email ou senha erradas"
                     supportFragmentManager.beginTransaction()
                         .replace(R.id.container, ErroFragment.newInstance(text))
@@ -173,7 +175,6 @@ class LoginActivity : AppCompatActivity()  {
 
             }
     }
-
 
 }
 

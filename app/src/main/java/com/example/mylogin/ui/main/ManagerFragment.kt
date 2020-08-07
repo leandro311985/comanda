@@ -1,17 +1,14 @@
 package com.example.mylogin.ui.main
 
 import android.content.ContentValues.TAG
-import android.content.Intent
-import androidx.lifecycle.ViewModelProviders
 import android.os.Bundle
 import android.util.Log
-import androidx.fragment.app.Fragment
 import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
-import com.example.mylogin.*
+import androidx.fragment.app.Fragment
+import androidx.lifecycle.ViewModelProviders
 import com.example.mylogin.R
-import com.example.mylogin.ui.login.LoginActivity
 import com.example.mylogin.ui.login.UserCreateFragment
 import com.google.firebase.database.*
 import kotlinx.android.synthetic.main.main_fragment2.*
@@ -41,7 +38,6 @@ class ManagerFragment : Fragment() {
             .child("users").child("001").child("pedido")
 
 
-
         val postListener = object : ValueEventListener {
             override fun onDataChange(dataSnapshot: DataSnapshot) {
                 // Get Post object and use the values to update the UI
@@ -58,12 +54,14 @@ class ManagerFragment : Fragment() {
 
     }
 
-    fun createNewUser(){
+    fun createNewUser() {
         createUserId.setOnClickListener {
             fragmentManager?.beginTransaction()
                 ?.replace(R.id.container, UserCreateFragment.newInstance())
                 ?.addToBackStack(null)
                 ?.commit()
+        }
+
     }
 
-}}
+}

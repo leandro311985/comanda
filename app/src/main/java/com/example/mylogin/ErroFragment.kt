@@ -35,7 +35,6 @@ class ErroFragment : Fragment() {
 
         btnErroFinish.setOnClickListener {
             activity?.supportFragmentManager?.popBackStack()
-           // activity?.finish()
         }
 
 
