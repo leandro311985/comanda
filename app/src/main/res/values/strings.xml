@@ -3,7 +3,7 @@
     <!-- Strings related to login -->
     <string name="prompt_email">Email</string>
     <string name="prompt_password">Password</string>
-    <string name="delete_user">Deletar Usuário</string>
+    <string name="create_user">Criar novo Usuário</string>
     <string name="action_sign_in">Entrar ou Registrar</string>
     <string name="action_sign_in_short">Entrar</string>
     <string name="welcome">"Bem-vinda !"</string>

@@ -23,22 +23,25 @@ class MainActivity : AppCompatActivity() {
                 .replace(R.id.container, MainFragment.newInstance())
                 .commitNow()
 
+            teste()
+
 
             auth = FirebaseAuth.getInstance()
             val nameUser = auth.currentUser?.email
-
-            imageSair.setOnClickListener {
-                dialog = LoadingDialog.get(this).show()
-                auth.signOut()
-                Thread.sleep(2000)
-                val intent = Intent(this, LoginActivity::class.java)
-                startActivity(intent)
-                dialog.hide()
-                finish()
-            }
-
-
             toolbar.title = "Seja Bem vindo(a) $nameUser"
+        }
+    }
+
+    fun teste(){
+        imageSair.setOnClickListener {
+            Thread.sleep(4000)
+            dialog = LoadingDialog.get(this).show()
+            loadingView.start()
+            auth.signOut()
+            val intent = Intent(this, LoginActivity::class.java)
+            startActivity(intent)
+            loadingView.stop()
+            finish()
         }
     }
 

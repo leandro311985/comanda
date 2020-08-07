@@ -42,7 +42,7 @@ class ManagerFragment : Fragment() {
             override fun onDataChange(dataSnapshot: DataSnapshot) {
                 // Get Post object and use the values to update the UI
                 val post = dataSnapshot.value
-                message.text = post.toString()
+                message.text = post?.toString()
             }
 
             override fun onCancelled(databaseError: DatabaseError) {

@@ -61,7 +61,7 @@
             android:layout_marginTop="16dp"
             android:layout_marginEnd="48dp"
             android:background="@drawable/fundo_layout_buttom_enable"
-            android:text="@string/action_sign_in"
+            android:text="@string/create_user"
             android:textColor="@android:color/white" />
 
     </LinearLayout>
