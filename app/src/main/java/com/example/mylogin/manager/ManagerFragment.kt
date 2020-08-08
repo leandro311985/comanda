@@ -12,6 +12,7 @@ import com.example.mylogin.R
 import com.example.mylogin.ui.main.MainViewModel
 import com.google.firebase.database.*
 import kotlinx.android.synthetic.main.main_fragment2.*
+import startCreateUserActivity
 import startHomeActivity
 
 class ManagerFragment : Fragment() {
@@ -57,8 +58,7 @@ class ManagerFragment : Fragment() {
 
     fun createNewUser() {
         createUserId.setOnClickListener {
-            context?.startHomeActivity()
-            //aqui falta chamar a tela de criar usuario
+            context?.startCreateUserActivity()
         }
 
     }

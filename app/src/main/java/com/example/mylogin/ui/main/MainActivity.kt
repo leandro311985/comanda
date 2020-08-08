@@ -34,7 +34,6 @@ class MainActivity : AppCompatActivity() {
 
     fun teste(){
         imageSair.setOnClickListener {
-            Thread.sleep(4000)
             dialog = LoadingDialog.get(this).show()
             loadingView.start()
             auth.signOut()

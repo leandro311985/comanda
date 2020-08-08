@@ -13,6 +13,7 @@ import androidx.fragment.app.FragmentManager
 import androidx.fragment.app.FragmentTransaction
 import com.example.mylogin.ui.main.MainActivity
 import com.example.mylogin.manager.ManagerActivity
+import com.example.mylogin.ui.login.CreateUserActivity
 import com.example.mylogin.ui.login.LoginActivity
 
 fun Fragment.slideNextFragment(fragment: Fragment,
@@ -101,6 +102,11 @@ fun Context.startLoginActivity() =
 
 fun Context.startManagerActivity() =
     Intent(this, ManagerActivity::class.java).also {
+        it.flags = Intent.FLAG_ACTIVITY_NEW_TASK or Intent.FLAG_ACTIVITY_CLEAR_TASK
+        startActivity(it)
+    }
+fun Context.startCreateUserActivity() =
+    Intent(this, CreateUserActivity::class.java).also {
         it.flags = Intent.FLAG_ACTIVITY_NEW_TASK or Intent.FLAG_ACTIVITY_CLEAR_TASK
         startActivity(it)
     }

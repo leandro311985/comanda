@@ -40,7 +40,7 @@
                 android:layout_marginLeft="30dp"
                 android:layout_marginRight="30dp"
                 android:layout_marginTop="70dp"
-                android:background="#fff"
+                android:background="@drawable/fundo_layout_login"
                 android:elevation="4dp"
                 android:orientation="vertical"
                 android:padding="20dp">
@@ -111,15 +111,7 @@
                         android:textColor="#fff"
                         android:textSize="18sp"/>
 
-                    <TextView
-                        android:id="@+id/text_view_register"
-                        android:layout_gravity="center_horizontal"
-                        android:textAppearance="@style/TextAppearance.AppCompat.Headline"
-                        android:textAlignment="center"
-                        android:onClick="@{(v) -> viewmodel.goToSignup(v)}"
-                        android:text="Don't have an account.\nRegister Here"
-                        android:layout_width="wrap_content"
-                        android:layout_height="wrap_content"/>
+
                 </LinearLayout>
 
             </RelativeLayout>
