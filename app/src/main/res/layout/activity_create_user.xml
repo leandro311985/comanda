@@ -13,11 +13,11 @@
         android:layout_height="match_parent"
         android:background="@color/color_app"
         android:orientation="vertical"
-        tools:context=".ui.auth.LoginActivity"
+        tools:context=".ui.auth.SignupActivity"
         android:scrollbarAlwaysDrawVerticalTrack="true">
 
         <RelativeLayout
-            android:id="@+id/loginLayout"
+            android:id="@+id/signupLayout"
             android:layout_centerInParent="true"
             android:layout_width="match_parent"
             android:layout_height="wrap_content">
@@ -28,7 +28,7 @@
                 android:layout_height="wrap_content"
                 android:layout_marginBottom="16dp"
                 android:gravity="center_horizontal"
-                android:text="Comanda Login App"
+                android:text="Novo Usuário "
                 android:textColor="#fff"
                 android:textSize="26sp"
                 android:textStyle="bold"/>
@@ -90,23 +90,15 @@
                         android:inputType="textPassword"/>
 
 
-                    <TextView
-                        android:id="@+id/text_view_forget_password"
-                        android:layout_width="wrap_content"
-                        android:layout_height="wrap_content"
-                        android:layout_gravity="right"
-                        android:paddingTop="5dp"
-                        android:text="Forgot Password?"/>
-
 
                     <Button
-                        android:id="@+id/button_sign_in"
+                        android:id="@+id/button_sign_up"
                         android:layout_width="fill_parent"
                         android:layout_height="wrap_content"
                         android:layout_margin="22dp"
-                        android:onClick="@{() -> viewmodel.login()}"
+                        android:onClick="@{() -> viewmodel.signup()}"
                         android:background="#d67601"
-                        android:text="Log in"
+                        android:text="Criar novo Usuário"
                         android:textAllCaps="false"
                         android:textColor="#fff"
                         android:textSize="18sp"/>
@@ -116,8 +108,8 @@
                         android:layout_gravity="center_horizontal"
                         android:textAppearance="@style/TextAppearance.AppCompat.Headline"
                         android:textAlignment="center"
-                        android:onClick="@{(v) -> viewmodel.goToSignup(v)}"
-                        android:text="Don't have an account.\nRegister Here"
+                        android:onClick="@{(v) -> viewmodel.goToLogin(v)}"
+                        android:text="Já tem uma conta. \nFaça login aqui"
                         android:layout_width="wrap_content"
                         android:layout_height="wrap_content"/>
                 </LinearLayout>
@@ -144,13 +136,6 @@
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"/>
 
-        <FrameLayout
-            android:layout_width="match_parent"
-            android:layout_height="match_parent"
-            android:id="@+id/container"/>
-
     </RelativeLayout>
-
-
 
 </layout>

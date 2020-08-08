@@ -9,7 +9,6 @@ import android.view.ViewGroup
 import androidx.fragment.app.Fragment
 import androidx.lifecycle.ViewModelProviders
 import com.example.mylogin.R
-import com.example.mylogin.ui.login.UserCreateFragment
 import com.google.firebase.database.*
 import kotlinx.android.synthetic.main.main_fragment2.*
 
@@ -56,10 +55,10 @@ class ManagerFragment : Fragment() {
 
     fun createNewUser() {
         createUserId.setOnClickListener {
-            fragmentManager?.beginTransaction()
-                ?.replace(R.id.container, UserCreateFragment.newInstance())
-                ?.addToBackStack(null)
-                ?.commit()
+//            fragmentManager?.beginTransaction()
+//                ?.replace(R.id.container, UserCreateFragment.newInstance())
+//                ?.addToBackStack(null)
+//                ?.commit()
         }
 
     }

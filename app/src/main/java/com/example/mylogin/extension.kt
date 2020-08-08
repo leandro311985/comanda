@@ -1,5 +1,6 @@
 import android.app.Activity
 import android.content.Context
+import android.content.Intent
 import android.content.SharedPreferences
 import android.view.View
 import android.view.inputmethod.InputMethodManager
@@ -10,6 +11,9 @@ import androidx.fragment.app.Fragment
 import androidx.fragment.app.FragmentActivity
 import androidx.fragment.app.FragmentManager
 import androidx.fragment.app.FragmentTransaction
+import com.example.mylogin.MainActivity
+import com.example.mylogin.ManagerActivity
+import com.example.mylogin.ui.login.LoginActivity
 
 fun Fragment.slideNextFragment(fragment: Fragment,
                                @IdRes fragmentContentId: Int,
@@ -82,3 +86,21 @@ fun AppCompatActivity.addFragmentToActivity(fragment: Fragment, tag: String) {
 
 inline fun <reified T> FragmentActivity.getTopFragment(): T?
         = supportFragmentManager.fragments.firstOrNull()?.let { it as? T }
+
+fun Context.startHomeActivity() =
+    Intent(this, MainActivity::class.java).also {
+        it.flags = Intent.FLAG_ACTIVITY_NEW_TASK or Intent.FLAG_ACTIVITY_CLEAR_TASK
+        startActivity(it)
+    }
+
+fun Context.startLoginActivity() =
+    Intent(this, LoginActivity::class.java).also {
+        it.flags = Intent.FLAG_ACTIVITY_NEW_TASK or Intent.FLAG_ACTIVITY_CLEAR_TASK
+        startActivity(it)
+    }
+
+fun Context.startManagerActivity() =
+    Intent(this, ManagerActivity::class.java).also {
+        it.flags = Intent.FLAG_ACTIVITY_NEW_TASK or Intent.FLAG_ACTIVITY_CLEAR_TASK
+        startActivity(it)
+    }
