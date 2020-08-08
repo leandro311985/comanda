@@ -5,8 +5,7 @@
     android:id="@+id/manager"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
-    android:background="@drawable/fundo_layout_manager"
-    tools:context=".ui.main.ManagerFragment">
+    tools:context=".manager.ManagerFragment">
 
     <Button
         android:id="@+id/createUserId"
@@ -15,8 +14,8 @@
         android:layout_marginStart="16dp"
         android:layout_marginEnd="16dp"
         android:layout_marginTop="16dp"
-        android:textColor="@android:color/holo_red_dark"
-        android:background="@drawable/fundo_layout_login"
+        android:textColor="@android:color/white"
+        android:background="@drawable/fundo_layout_manager"
         android:text="Adicionar novo Usuario"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintStart_toStartOf="parent"
@@ -27,8 +26,8 @@
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:text="Gerente"
-        android:textColor="@android:color/white"
         android:textSize="25sp"
+        android:textColor="@android:color/holo_red_dark"
         app:layout_constraintBottom_toBottomOf="parent"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintStart_toStartOf="parent"

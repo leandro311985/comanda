@@ -1,10 +1,10 @@
-package com.example.mylogin
+package com.example.mylogin.ui.main
 
 import android.content.Intent
 import android.os.Bundle
 import androidx.appcompat.app.AppCompatActivity
+import com.example.mylogin.R
 import com.example.mylogin.ui.login.LoginActivity
-import com.example.mylogin.ui.main.MainFragment
 import com.github.loadingview.LoadingDialog
 import com.google.firebase.auth.FirebaseAuth
 import kotlinx.android.synthetic.main.main_activity.*

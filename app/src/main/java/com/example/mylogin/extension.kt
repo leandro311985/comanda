@@ -11,8 +11,8 @@ import androidx.fragment.app.Fragment
 import androidx.fragment.app.FragmentActivity
 import androidx.fragment.app.FragmentManager
 import androidx.fragment.app.FragmentTransaction
-import com.example.mylogin.MainActivity
-import com.example.mylogin.ManagerActivity
+import com.example.mylogin.ui.main.MainActivity
+import com.example.mylogin.manager.ManagerActivity
 import com.example.mylogin.ui.login.LoginActivity
 
 fun Fragment.slideNextFragment(fragment: Fragment,
