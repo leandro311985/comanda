@@ -1,26 +1,28 @@
 <?xml version="1.0" encoding="utf-8"?>
-<layout
-    xmlns:android="http://schemas.android.com/apk/res/android"
-    xmlns:tools="http://schemas.android.com/tools"
-    >
+<layout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools">
 
     <data>
-        <variable name="viewmodel"
-            type="com.example.mylogin.ui.login.AuthViewModel"/>
+
+        <variable
+            name="viewmodel"
+            type="com.example.mylogin.ui.login.AuthViewModel" />
     </data>
 
-    <RelativeLayout android:layout_width="match_parent"
+    <RelativeLayout
+        android:layout_width="match_parent"
         android:layout_height="match_parent"
         android:background="@color/color_app"
         android:orientation="vertical"
-        tools:context=".ui.auth.LoginActivity"
-        android:scrollbarAlwaysDrawVerticalTrack="true">
+        android:scrollbarAlwaysDrawVerticalTrack="true"
+        tools:context=".ui.auth.LoginActivity">
 
         <RelativeLayout
             android:id="@+id/loginLayout"
-            android:layout_centerInParent="true"
             android:layout_width="match_parent"
-            android:layout_height="wrap_content">
+            android:layout_height="wrap_content"
+            android:layout_centerInParent="true">
 
             <TextView
                 android:id="@+id/login_title"
@@ -31,15 +33,15 @@
                 android:text="Comanda Login App"
                 android:textColor="#fff"
                 android:textSize="26sp"
-                android:textStyle="bold"/>
+                android:textStyle="bold" />
 
             <RelativeLayout
                 android:layout_width="fill_parent"
                 android:layout_height="wrap_content"
                 android:layout_below="@+id/login_title"
                 android:layout_marginLeft="30dp"
-                android:layout_marginRight="30dp"
                 android:layout_marginTop="70dp"
+                android:layout_marginRight="30dp"
                 android:background="@drawable/fundo_layout_login"
                 android:elevation="4dp"
                 android:orientation="vertical"
@@ -53,41 +55,41 @@
 
 
                     <TextView
-                        android:labelFor="@id/text_email"
-                        android:text="email"
-                        android:fontFamily="sans-serif-light"
                         android:layout_width="wrap_content"
-                        android:layout_height="wrap_content"/>
+                        android:layout_height="wrap_content"
+                        android:fontFamily="sans-serif-light"
+                        android:labelFor="@id/text_email"
+                        android:text="email" />
 
                     <EditText
                         android:id="@+id/text_email"
                         android:layout_width="fill_parent"
                         android:layout_height="wrap_content"
+                        android:layout_marginBottom="10dp"
                         android:drawableLeft="@drawable/ic_email"
                         android:drawablePadding="10dp"
-                        android:singleLine="true"
-                        android:text="@={viewmodel.email}"
-                        android:layout_marginBottom="10dp"
                         android:hint="john@gmail.com"
-                        android:inputType="textEmailAddress"/>
+                        android:inputType="textEmailAddress"
+                        android:singleLine="true"
+                        android:text="@={viewmodel.email}" />
 
                     <TextView
-                        android:labelFor="@id/edit_text_password"
-                        android:text="password"
-                        android:fontFamily="sans-serif-light"
                         android:layout_width="wrap_content"
-                        android:layout_height="wrap_content"/>
+                        android:layout_height="wrap_content"
+                        android:fontFamily="sans-serif-light"
+                        android:labelFor="@id/edit_text_password"
+                        android:text="password" />
 
                     <EditText
-                        android:drawablePadding="10dp"
+                        android:id="@+id/edit_text_password"
                         android:layout_width="fill_parent"
                         android:layout_height="wrap_content"
-                        android:singleLine="true"
-                        android:text="@={viewmodel.password}"
-                        android:id="@+id/edit_text_password"
                         android:drawableLeft="@drawable/ic_lock"
+                        android:drawablePadding="10dp"
                         android:hint="Password"
-                        android:inputType="textPassword"/>
+                        android:inputType="textPassword"
+                        android:singleLine="true"
+                        android:text="@={viewmodel.password}" />
 
 
                     <TextView
@@ -96,7 +98,7 @@
                         android:layout_height="wrap_content"
                         android:layout_gravity="right"
                         android:paddingTop="5dp"
-                        android:text="Forgot Password?"/>
+                        android:text="Forgot Password?" />
 
 
                     <Button
@@ -104,12 +106,12 @@
                         android:layout_width="fill_parent"
                         android:layout_height="wrap_content"
                         android:layout_margin="22dp"
-                        android:onClick="@{() -> viewmodel.login()}"
                         android:background="#d67601"
+                        android:onClick="@{() -> viewmodel.login()}"
                         android:text="Log in"
                         android:textAllCaps="false"
                         android:textColor="#fff"
-                        android:textSize="18sp"/>
+                        android:textSize="18sp" />
 
 
                 </LinearLayout>
@@ -125,24 +127,36 @@
                 android:layout_marginTop="16dp"
                 android:background="@drawable/user_profile_image_background"
                 android:elevation="4dp"
-                android:src="@drawable/ic_boy"/>
+                android:src="@drawable/ic_boy" />
 
         </RelativeLayout>
 
-        <ProgressBar
-            android:id="@+id/progressbar"
-            android:visibility="gone"
-            android:layout_centerInParent="true"
+        <!--        <ProgressBar-->
+        <!--            android:id="@+id/progressbar"-->
+        <!--            android:visibility="gone"-->
+        <!--            android:layout_centerInParent="true"-->
+        <!--            android:layout_width="wrap_content"-->
+        <!--            android:layout_height="wrap_content"/>-->
+
+        <com.github.loadingview.LoadingView
+            android:id="@+id/loadingView"
             android:layout_width="wrap_content"
-            android:layout_height="wrap_content"/>
+            android:layout_height="wrap_content"
+            android:layout_centerInParent="true"
+            android:layout_centerHorizontal="true"
+            android:layout_gravity="center"
+            android:visibility="gone"
+            app:lv_end_color="@color/color_end"
+            app:lv_external_radius="24dp"
+            app:lv_internal_radius="4dp"
+            app:lv_start_color="@color/color_start" />
 
         <FrameLayout
+            android:id="@+id/container"
             android:layout_width="match_parent"
-            android:layout_height="match_parent"
-            android:id="@+id/container"/>
+            android:layout_height="match_parent" />
 
     </RelativeLayout>
-
 
 
 </layout>
