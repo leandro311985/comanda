@@ -7,4 +7,12 @@
         <item name="colorAccent">@color/colorAccent</item>
     </style>
 
+    <style name="AppThemeManager" parent="Theme.AppCompat.Light.NoActionBar">
+        <!-- Customize your theme here. -->
+        <item name="colorPrimary">@color/color_white</item>
+        <item name="colorPrimaryDark">@color/color_app_manager</item>
+        <item name="colorAccent">@color/colorAccent</item>
+    </style>
+
+
 </resources>

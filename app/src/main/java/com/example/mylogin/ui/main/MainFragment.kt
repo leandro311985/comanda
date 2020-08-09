@@ -7,15 +7,23 @@ import android.view.ViewGroup
 import android.widget.Toast
 import androidx.fragment.app.Fragment
 import androidx.lifecycle.ViewModelProviders
+import com.example.mylogin.AuthListener
 import com.example.mylogin.Description
 import com.example.mylogin.Pedido
 import com.example.mylogin.R
+import com.example.mylogin.ui.login.AuthViewModelFactory
 import com.github.loadingview.LoadingDialog
 import com.google.firebase.database.DatabaseReference
 import com.google.firebase.database.FirebaseDatabase
 import kotlinx.android.synthetic.main.main_fragment.*
+import org.kodein.di.KodeinAware
+import org.kodein.di.android.x.kodein
+import org.kodein.di.generic.instance
 
-class MainFragment : Fragment() {
+class MainFragment : Fragment() , AuthListener, KodeinAware {
+
+    override val kodein by kodein()
+    private val factory: MainViewModelFactory by instance()
 
     companion object {
         fun newInstance() = MainFragment()
@@ -40,21 +48,16 @@ class MainFragment : Fragment() {
 
     override fun onActivityCreated(savedInstanceState: Bundle?) {
         super.onActivityCreated(savedInstanceState)
-        viewModel = ViewModelProviders.of(this).get(MainViewModel::class.java)
+        viewModel = ViewModelProviders.of(this,factory).get(MainViewModel::class.java)
         database = FirebaseDatabase.getInstance().reference
 
         //dialog = LoadingDialog[MainActivity()].show()
-
-
-
-
         gravar()
-
 
     }
 
     fun gravar(){
-       // dialog.show()
+
         button.setOnClickListener {
             var totalAmount: Int = 0
             val result = StringBuilder()
@@ -78,9 +81,9 @@ class MainFragment : Fragment() {
             result.append("\nTotal: " + totalAmount + "Rs")
             var pedidos = pizza
             Toast.makeText(activity, result.toString(), Toast.LENGTH_SHORT).show()
-            pedidoFirebase(pedidos?:"","20,00","1")
-            pedidoFirebase(cafe?:"","5,00","1")
-
+            viewModel.writeData()
+//            pedidoFirebase(pedidos?:"","20,00","1")
+//            pedidoFirebase(cafe?:"","5,00","1")
          //   Thread.sleep(5000)
         //    dialog.hide()
 
@@ -92,6 +95,18 @@ class MainFragment : Fragment() {
     private fun pedidoFirebase(tipo: String, preco: String, quantidade: String?) {
         val pedido = Pedido(pedido = Description(tipo,preco,quantidade?:""))
         database.child("users").child("001").setValue(pedido)
+    }
+
+    override fun onStarted() {
+        TODO("Not yet implemented")
+    }
+
+    override fun onSuccess() {
+        TODO("Not yet implemented")
+    }
+
+    override fun onFailure(message: String) {
+        TODO("Not yet implemented")
     }
 
 

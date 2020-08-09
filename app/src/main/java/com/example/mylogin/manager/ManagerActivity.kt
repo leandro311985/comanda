@@ -13,6 +13,7 @@ class ManagerActivity : AppCompatActivity() {
 
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
+        setTheme(R.style.AppThemeManager)
         setContentView(R.layout.manager_activity)
         if (savedInstanceState == null) {
             supportFragmentManager.beginTransaction()

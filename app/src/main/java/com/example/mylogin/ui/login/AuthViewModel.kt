@@ -56,7 +56,7 @@ class AuthViewModel(private val repository: UserRepository) : ViewModel() {
     //Doing same thing with signup
     fun signup() {
         if (email.isNullOrEmpty() || password.isNullOrEmpty()) {
-            authListener?.onFailure("Please input all values")
+            authListener?.onFailure("Insira todos os valores")
             return
         }
         authListener?.onStarted()
@@ -70,6 +70,7 @@ class AuthViewModel(private val repository: UserRepository) : ViewModel() {
             })
         disposables.add(disposable)
     }
+
 
     fun goToSignup(view: View) {
         Intent(view.context, CreateUserActivity::class.java).also {

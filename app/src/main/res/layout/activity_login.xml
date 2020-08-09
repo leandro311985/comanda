@@ -4,7 +4,6 @@
     xmlns:tools="http://schemas.android.com/tools">
 
     <data>
-
         <variable
             name="viewmodel"
             type="com.example.mylogin.ui.login.AuthViewModel" />
@@ -108,7 +107,7 @@
                         android:layout_margin="22dp"
                         android:background="#d67601"
                         android:onClick="@{() -> viewmodel.login()}"
-                        android:text="Log in"
+                        android:text="Login"
                         android:textAllCaps="false"
                         android:textColor="#fff"
                         android:textSize="18sp" />

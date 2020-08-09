@@ -10,6 +10,7 @@ import androidx.fragment.app.Fragment
 import androidx.lifecycle.ViewModelProviders
 import com.example.mylogin.R
 import com.example.mylogin.ui.main.MainViewModel
+import com.google.firebase.auth.FirebaseAuth
 import com.google.firebase.database.*
 import kotlinx.android.synthetic.main.main_fragment2.*
 import startCreateUserActivity
@@ -22,6 +23,8 @@ class ManagerFragment : Fragment() {
     }
 
     private lateinit var postReference: DatabaseReference
+    lateinit var auth: FirebaseAuth
+
 
     private lateinit var viewModel: MainViewModel
 
@@ -34,25 +37,29 @@ class ManagerFragment : Fragment() {
 
     override fun onActivityCreated(savedInstanceState: Bundle?) {
         super.onActivityCreated(savedInstanceState)
-        viewModel = ViewModelProviders.of(this).get(MainViewModel::class.java)
-        createNewUser()
+        auth = FirebaseAuth.getInstance()
         postReference = FirebaseDatabase.getInstance().reference
-            .child("users").child("001").child("pedido")
+        postReference.child("users").child(auth.uid?:"").child("username").setValue("pedido")
 
+        createNewUser()
 
-        val postListener = object : ValueEventListener {
-            override fun onDataChange(dataSnapshot: DataSnapshot) {
-                // Get Post object and use the values to update the UI
-                val post = dataSnapshot.value
-                message.text = post?.toString()
-            }
-
-            override fun onCancelled(databaseError: DatabaseError) {
-                // Getting Post failed, log a message
-                Log.w(TAG, "loadPost:onCancelled", databaseError.toException())
-            }
-        }
-        postReference.addValueEventListener(postListener)
+//        postReference = FirebaseDatabase.getInstance().reference
+//            .child("users").child("001").child("pedido")
+//
+//
+//        val postListener = object : ValueEventListener {
+//            override fun onDataChange(dataSnapshot: DataSnapshot) {
+//                // Get Post object and use the values to update the UI
+//                val post = dataSnapshot.value
+//                message.text = post?.toString()
+//            }
+//
+//            override fun onCancelled(databaseError: DatabaseError) {
+//                // Getting Post failed, log a message
+//                Log.w(TAG, "loadPost:onCancelled", databaseError.toException())
+//            }
+//        }
+//        postReference.addValueEventListener(postListener)
 
     }
 
