@@ -10,4 +10,5 @@
     <string name="invalid_username">Não é um Email de usuário válido</string>
     <string name="invalid_password">A senha deve ter mais 6 caracteres</string>
     <string name="login_failed">"Login falhou"</string>
+    <string name="dummy_description">vazio</string>
 </resources>

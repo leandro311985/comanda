@@ -1,8 +1,11 @@
+import android.annotation.SuppressLint
 import android.app.Activity
 import android.content.Context
 import android.content.Intent
 import android.content.SharedPreferences
+import android.util.DisplayMetrics
 import android.view.View
+import android.view.WindowManager
 import android.view.inputmethod.InputMethodManager
 import androidx.annotation.AnimRes
 import androidx.annotation.IdRes
@@ -110,3 +113,22 @@ fun Context.startCreateUserActivity() =
         it.flags = Intent.FLAG_ACTIVITY_NEW_TASK or Intent.FLAG_ACTIVITY_CLEAR_TASK
         startActivity(it)
     }
+
+fun getScreenWidth(context: Context): Int {
+    val metrics = getDisplayMetrics(context)
+    return metrics.widthPixels
+}
+
+@SuppressLint("WrongConstant")
+fun getDisplayMetrics(context: Context): DisplayMetrics {
+    return if (context is Activity) {
+        val metrics = DisplayMetrics()
+        context.windowManager.defaultDisplay.getMetrics(metrics)
+        metrics
+    } else {
+        val wm = context.getSystemService("window") as WindowManager
+        val metrics = DisplayMetrics()
+        wm.defaultDisplay.getMetrics(metrics)
+        metrics
+    }
+}

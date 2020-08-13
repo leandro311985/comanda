@@ -8,7 +8,7 @@
         />
 
     <solid
-        android:color="@color/colorPrimaryDark"
+        android:color="#867979"
         />
 
 </shape>

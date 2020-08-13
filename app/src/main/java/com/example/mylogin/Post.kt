@@ -11,6 +11,7 @@ data class Post(
     var title: String? = "",
     var body: String? = "",
     var starCount: Int = 0,
+
     var stars: MutableMap<String, Boolean> = HashMap()
 ) {
 

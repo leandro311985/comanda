@@ -1,15 +1,72 @@
 <?xml version="1.0" encoding="utf-8"?>
 <resources>
-    <color name="colorPrimary">#6200EE</color>
-    <color name="colorPrimaryDark">#3700B3</color>
-    <color name="colorAccent">#03DAC5</color>
-    <color name="color_red">#E61313</color>
-    <color name="color_app">#008577</color>
-    <color name="color_app_manager">#E61313</color>
-    <color name="color_white">#ffffff</color>
+    <!-- Via Varejo -->
+    <color name="deepGreen">#00682e</color> <!-- C1 -->
+    <color name="darkishGreen">#207f4b</color> <!-- C2, C3 -->
+
+    <!-- Casas Bahia -->
+    <color name="midBlue">#206bb2</color> <!-- C1 -->
+    <color name="windowsBlueTwo">#3e80c0</color> <!-- C2 -->
+    <color name="darkSkyBlue">#44a4d9</color> <!-- C3 -->
+
+    <!-- Ponto Frio -->
+    <color name="scarlet">#bc0206</color> <!-- C1 -->
+    <color name="brick">#c82524</color> <!-- C2 -->
+    <color name="paleRed">#d94444</color> <!-- C3 -->
+
+
+    <color name="summarygreen">#39B62E</color>
+    <color name="summaryred">#B40107</color>
+    <color name="summaryorange">#FF7A00</color>
+
+    <color name="transparent">#00000000</color>
+    <color name="white">#ffffff</color>
+    <color name="whiteFa">#fafafa</color>
+    <color name="whiteFa30">#1afafafa</color>
+    <color name="white5">#0Dffffff</color>
+    <color name="white80">#ccffffff</color>
+    <color name="pinkishGrey50">#e5e5e5</color>
+    <color name="gray">#e5e5e5</color>
+    <color name="pinkishGrey">#cccccc</color>
+    <color name="whiteb3">#b3ffffff</color>
+    <color name="white70">#b3ffffff</color>
+    <color name="warmGrey">#999999</color>
+    <color name="grayOpacity50">#80e5e5e5</color>
+    <color name="warmGrey2">#979797</color>
+    <color name="lightGray">#999999</color>
+    <color name="warmGrey70">#b3999999</color>
+    <color name="midGray">#4a4a4a</color>
+    <color name="whiteFaWithShadow">#19000000</color>
+    <color name="black70">#b3000000</color>
+    <color name="black50">#7d000000</color>
+    <color name="black30">#4d000000</color>
+    <color name="black15">#27000000</color>
+    <color name="black5">#0e000000</color>
+    <color name="black">#000000</color>
+    <color name="coral">#f35c58</color>
+    <color name="paleOliveGreen">#A2EF81</color>
+    <color name="appleGreenYellow">#73bd00</color>
+    <color name="orderGreen">#30A94B</color>
+    <color name="orderBlue">#2A6FAF</color>
+    <color name="redTextInputLayoutError">#FFDD2C00</color>
+    <color name="wheelFade">#e1fafafa</color>
+    <color name="wheelFadeWhiteBackground">#e1ffffff</color>
+    <color name="yellow_orange">#fbba00</color>
+    <color name="orange">#FFA500</color>
+
+    <color name="blueLight">#d9e6f2</color>
+    <color name="blue">#3E80C0</color>
+
+    <color name="redLightReproved">#fbe6ec</color>
+    <color name="redReproved">#D30545</color>
+
+    <color name="greenApproved">#10CB00</color>
+    <color name="greenLightApproved">#e7fae6</color>
+
+    <color name="yellowWarning">#FFB413</color>
+    <color name="yellowLightWarning">#fdf7e8</color>
 
 
 
-    <color name="trans">#00000000 </color>
 
 </resources>

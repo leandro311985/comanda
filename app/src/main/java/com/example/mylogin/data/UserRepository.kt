@@ -11,10 +11,12 @@ class UserRepository(
 
     fun logout() = firebase.logout()
 
-    fun saveData(userId: String,username: String, title: String, body: String) =
-        firebase.writeNewPost(userId = userId,username = username,title = title,body = body)
+    fun saveData(userId: String,username: String, title: String, body: String,starCount:Int) =
+        firebase.writeNewPost(userId = userId,username = username,title = title,body = body,starCount = starCount)
 
     fun responseDb(userId: String,user:String) = firebase.responseDb(user,userId)
+
+    fun managerResponse(status: String) = firebase.managerResponse(status)
 
 
 }

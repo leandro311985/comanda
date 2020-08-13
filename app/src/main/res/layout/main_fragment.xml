@@ -16,6 +16,18 @@
        android:textColor="@android:color/holo_green_dark"
        android:textSize="32sp"
        android:textStyle="bold" />
+
+   <TextView
+       android:id="@+id/textStatus"
+       android:layout_width="wrap_content"
+       android:layout_height="wrap_content"
+       android:layout_centerHorizontal="true"
+       android:layout_marginTop="100dp"
+       android:text="Status"
+       android:textAlignment="center"
+       android:textColor="@android:color/holo_green_dark"
+       android:textSize="32sp"
+       android:textStyle="bold" />
    <TextView
        android:layout_width="match_parent"
        android:layout_height="wrap_content"
@@ -56,6 +68,7 @@
        android:layout_centerInParent="true"
        android:layout_marginTop="10dp"
        android:text="Hamburguer" />
+
    <Button
        android:id="@+id/button"
        android:layout_width="match_parent"
@@ -63,4 +76,6 @@
        android:layout_below="@id/checkBox3"
        android:layout_marginTop="10dp"
        android:text="Compra completa" />
+
+
 </RelativeLayout>

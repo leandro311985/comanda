@@ -4,7 +4,7 @@ import android.os.Bundle
 import androidx.appcompat.app.AppCompatActivity
 import androidx.databinding.DataBindingUtil
 import androidx.lifecycle.ViewModelProviders
-import com.example.mylogin.AuthListener
+import com.example.mylogin.data.AuthListener
 import com.example.mylogin.Dialog_components_Fragment
 import com.example.mylogin.R
 import com.example.mylogin.databinding.ActivityLoginBinding
@@ -32,6 +32,7 @@ class LoginActivity : AppCompatActivity(), AuthListener, KodeinAware {
             DataBindingUtil.setContentView(this, R.layout.activity_login)
         viewModel = ViewModelProviders.of(this, factory).get(AuthViewModel::class.java)
         binding.viewmodel = viewModel
+
 
         auth = FirebaseAuth.getInstance()
 

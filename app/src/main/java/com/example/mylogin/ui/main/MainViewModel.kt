@@ -1,9 +1,8 @@
 package com.example.mylogin.ui.main
 
 import androidx.lifecycle.ViewModel
-import com.example.mylogin.AuthListener
+import com.example.mylogin.data.AuthListener
 import com.example.mylogin.data.UserRepository
-import com.github.loadingview.LoadingDialog
 import io.reactivex.android.schedulers.AndroidSchedulers
 import io.reactivex.disposables.CompositeDisposable
 import io.reactivex.schedulers.Schedulers
@@ -25,8 +24,8 @@ class MainViewModel(private val repository: UserRepository): ViewModel() {
     }
 
 
-    fun writeData(){
-        val disposable = repository.saveData(body = "café com leite",title = "mesa 3",userId = user?.uid?:"001",username = "josé")
+    fun writeData(body:String,title: String,userId:String,userName:String,starCount:Int){
+        val disposable = repository.saveData(body,title ,userId,userName,starCount)
             .subscribeOn(Schedulers.io())
             .observeOn(AndroidSchedulers.mainThread())
             .subscribe({
@@ -48,6 +47,8 @@ class MainViewModel(private val repository: UserRepository): ViewModel() {
             })
         disposables.add(disposable)
     }
+
+
 
     fun exit(){
         logout

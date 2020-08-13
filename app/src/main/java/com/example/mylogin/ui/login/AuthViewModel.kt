@@ -3,7 +3,7 @@ package com.example.mylogin.ui.login
 import android.content.Intent
 import androidx.lifecycle.ViewModel
 import android.view.View
-import com.example.mylogin.AuthListener
+import com.example.mylogin.data.AuthListener
 
 import com.example.mylogin.data.UserRepository
 import io.reactivex.android.schedulers.AndroidSchedulers

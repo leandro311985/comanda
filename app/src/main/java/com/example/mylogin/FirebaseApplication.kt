@@ -3,6 +3,7 @@ package com.example.mylogin
 import android.app.Application
 import com.example.mylogin.data.FirebaseSource
 import com.example.mylogin.data.UserRepository
+import com.example.mylogin.manager.ManagerViewModelFactory
 import com.example.mylogin.ui.login.AuthViewModelFactory
 import com.example.mylogin.ui.main.MainViewModelFactory
 import org.kodein.di.Kodein
@@ -22,6 +23,9 @@ class FirebaseApplication : Application(), KodeinAware {
         bind() from singleton { UserRepository(instance()) }
         bind() from provider { AuthViewModelFactory(instance()) }
         bind() from provider { MainViewModelFactory(instance()) }
+        bind() from provider { ManagerViewModelFactory(instance()) }
+
+
 
     }
 }

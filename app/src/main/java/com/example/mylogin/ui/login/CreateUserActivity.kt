@@ -5,7 +5,7 @@ import android.view.View
 import androidx.appcompat.app.AppCompatActivity
 import androidx.databinding.DataBindingUtil
 import androidx.lifecycle.ViewModelProviders
-import com.example.mylogin.AuthListener
+import com.example.mylogin.data.AuthListener
 import com.example.mylogin.Dialog_components_Fragment
 import com.example.mylogin.R
 import com.example.mylogin.databinding.ActivityCreateUserBinding
@@ -14,7 +14,8 @@ import org.kodein.di.KodeinAware
 import org.kodein.di.android.kodein
 import org.kodein.di.generic.instance
 
-class CreateUserActivity : AppCompatActivity(), AuthListener, KodeinAware {
+class CreateUserActivity : AppCompatActivity(),
+    AuthListener, KodeinAware {
 
     override val kodein by kodein()
     private val factory: AuthViewModelFactory by instance()

@@ -7,12 +7,11 @@ import android.view.ViewGroup
 import android.widget.Toast
 import androidx.fragment.app.Fragment
 import androidx.lifecycle.ViewModelProviders
-import com.example.mylogin.AuthListener
-import com.example.mylogin.Description
-import com.example.mylogin.Pedido
+import com.example.mylogin.Dialog_components_Fragment
 import com.example.mylogin.R
-import com.example.mylogin.ui.login.AuthViewModelFactory
+import com.example.mylogin.data.AuthListener
 import com.github.loadingview.LoadingDialog
+import com.google.firebase.auth.FirebaseAuth
 import com.google.firebase.database.DatabaseReference
 import com.google.firebase.database.FirebaseDatabase
 import kotlinx.android.synthetic.main.main_fragment.*
@@ -28,12 +27,15 @@ class MainFragment : Fragment() , AuthListener, KodeinAware {
     companion object {
         fun newInstance() = MainFragment()
     }
+    lateinit var auth: FirebaseAuth
 
     private lateinit var viewModel: MainViewModel
     private lateinit var database: DatabaseReference
     private var pizza: String? = null
     private var buger: String? = null
     private var cafe: String? = null
+    private var status: Boolean? = null
+
     private lateinit var  dialog : LoadingDialog
 
 
@@ -50,8 +52,9 @@ class MainFragment : Fragment() , AuthListener, KodeinAware {
         super.onActivityCreated(savedInstanceState)
         viewModel = ViewModelProviders.of(this,factory).get(MainViewModel::class.java)
         database = FirebaseDatabase.getInstance().reference
+        auth = FirebaseAuth.getInstance()
 
-        //dialog = LoadingDialog[MainActivity()].show()
+//        dialog = LoadingDialog[MainActivity()].show()
         gravar()
 
     }
@@ -62,39 +65,28 @@ class MainFragment : Fragment() , AuthListener, KodeinAware {
             var totalAmount: Int = 0
             val result = StringBuilder()
 
-            result.append("Selected Items")
+            result.append("Pedidos Selecionados")
             if (checkBox1.isChecked) {
-                result.append("\nPizza 100Rs")
+                result.append("\nPizza  ---> 16,90Rs")
                 pizza = "pizza"
             }
             if (checkBox2.isChecked) {
-                result.append("\nCoffee 50Rs")
+                result.append("\nCafé  ---> 5,00Rs")
                 cafe = "café"
                 totalAmount += 50
             }
             if (checkBox3.isChecked) {
-                result.append("\nBurger 120Rs")
+                result.append("\nHambuger   ---> 39,800Rs")
                 buger = "Hambuger"
 
                 totalAmount += 120
             }
             result.append("\nTotal: " + totalAmount + "Rs")
-            var pedidos = pizza
             Toast.makeText(activity, result.toString(), Toast.LENGTH_SHORT).show()
-            viewModel.writeData()
-//            pedidoFirebase(pedidos?:"","20,00","1")
-//            pedidoFirebase(cafe?:"","5,00","1")
-         //   Thread.sleep(5000)
-        //    dialog.hide()
 
-
+            viewModel.writeData(result.toString(),"pedido",auth.currentUser?.uid?:"",auth.currentUser?.email?:"",21)
         }
 
-    }
-
-    private fun pedidoFirebase(tipo: String, preco: String, quantidade: String?) {
-        val pedido = Pedido(pedido = Description(tipo,preco,quantidade?:""))
-        database.child("users").child("001").setValue(pedido)
     }
 
     override fun onStarted() {
@@ -102,13 +94,22 @@ class MainFragment : Fragment() , AuthListener, KodeinAware {
     }
 
     override fun onSuccess() {
-        TODO("Not yet implemented")
+        Toast.makeText(activity, "sucesso ao gravar", Toast.LENGTH_SHORT).show()
     }
 
     override fun onFailure(message: String) {
-        TODO("Not yet implemented")
+        fragmentManager?.beginTransaction()
+            ?.replace(R.id.container, Dialog_components_Fragment.newInstance(message,false))
+            ?.addToBackStack(null)
+            ?.commit()
     }
 
+    fun status(){
+        if (status == true){
+            textStatus.text = "pronto a retirar ao cliente"
+        }else
+        textStatus.text = "processando"
+    }
 
 }
 
